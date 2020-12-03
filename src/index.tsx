@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.scss';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Button from './components/Button/index'
+import Alert from './components/Alert/index'
+import './styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Button>按钮</Button>
+    <Alert message={'打开了 Alert !'} alertType='primary' close={true}></Alert>
   </React.StrictMode>,
   document.getElementById('root')
 );
