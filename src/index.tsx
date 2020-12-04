@@ -7,7 +7,9 @@ import './styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Button>按钮</Button>
+    <Button>
+      <span onClick={() => { console.log(666) }}>按钮</span>
+    </Button>
     <Alert message={'打开了 Alert !'} alertType='primary' close={true}></Alert>
   </React.StrictMode>,
   document.getElementById('root')

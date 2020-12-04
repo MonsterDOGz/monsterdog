@@ -1,15 +1,15 @@
-import { FC, ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import classNames from 'classnames'
 
 type ButtonType = 'primary' | 'danger' | 'default' | 'link'
 type ButtonSize = 'lg' | 'sm'
 
-interface BaseButtonProps{
+interface BaseButtonProps {
+  children?: ReactNode;
+  className?: string;
   btnType?: ButtonType;
   size?: ButtonSize;
-  className? : string;
-  children?: ReactNode;
-  disabled?: boolean;
+  disabled? : boolean;
   href?: string
 }
 
@@ -19,10 +19,10 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
 const Button: FC<ButtonProps> = (props) => {
   const {
+    children,
+    className,
     btnType,
     size,
-    className,
-    children,
     disabled,
     href,
     ...restProps
@@ -35,11 +35,11 @@ const Button: FC<ButtonProps> = (props) => {
   if (btnType === 'link' && href) {
     return (
       <a
-        className={classes}
-        href={href}
-        {...restProps}
+       className={classes}
+       href={href}
+       {...restProps}
       >
-        {children}
+        { children }
       </a>
     )
   } else {
@@ -47,9 +47,9 @@ const Button: FC<ButtonProps> = (props) => {
       <button
         className={classes}
         disabled={disabled}
-        {...restProps}
+        { ...restProps }
       >
-        {children}
+        { children }
       </button>
     )
   }
