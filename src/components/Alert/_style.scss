@@ -6,19 +6,25 @@
   display: inline-block;
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
-  color: $white;
+  color: $gray-900;
   white-space: nowrap;
   text-align: left;
   vertical-align: middle;
   background-image: none;
-  padding: 1rem 1rem;
+  padding: 1rem;
   font-size: $font-size-base;
+  border: $border-width solid transparent;
   border-radius: $border-radius-lg;
-  width: 20rem;
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 10rem;
 }
 
 .alert-primary {
   @include alert-style($primary);
+}
+.alert-success {
+  @include alert-style($success);
 }
 .alert-danger {
   @include alert-style($danger);
@@ -30,15 +36,35 @@
   @include alert-style($secondary);
 }
 
-.alert-title {
-  font-size: $h4-font-size;
+.alert-content {
+  flex: 1;
+}
+
+.alert-message {
+  font-size: $h6-font-size;
+  margin-bottom: 0;
+}
+
+.alert-description {
+  margin: 0.5rem 0 0;
+  font-size: $font-size-sm;
+  white-space: normal;
+  line-height: $line-height-base;
 }
 
 .alert-close {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
-  color: $white;
+  display: inline-block;
+  height: 1.5rem;
+  color: $gray-600;
   font-size: $font-size-sm;
   cursor: pointer;
+  margin-left: 0.5rem;
+  transition: 0.2s;
+  &:hover {
+    color: $gray-700;
+  }
+  &:focus,
+  &.focus {
+    color: $gray-700;
+  }
 }

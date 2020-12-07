@@ -1,41 +1,49 @@
 import { FC } from 'react'
 import classNames from 'classnames'
 
-type AlertType = 'primary' | 'danger' | 'warning' | 'default'
+export type AlertType = 'success' | 'primary' | 'warning' | 'danger'
 
-interface AlertProps {
+export interface AlertProps {
   message?: string;
-  title?: string;
-  alertType?: AlertType;
-  close? : boolean;
-  className?: string
+  description?: string;
+  type?: AlertType;
+  closable? : boolean;
+  className?: string,
+  close? : Function
 }
 
 const Alert: FC<AlertProps> = (props) => {
   const {
     message,
-    title,
-    alertType,
+    description,
+    type,
+    closable,
+    className,
     close,
-    className
+    ...restProps
   } = props
   const classes = classNames('alert', className, {
-    [`alert-${alertType}`]: alertType
+    [`alert-${type}`]: type
   })
   return (
     <div
       className={classes}
+      { ...restProps }
     >
-      { title && <p className={'alert-title'}>{title}</p> }
-      <p>{message}</p>
-      { close && <span className={'alert-close'}>关闭</span> }
+      <div className='alert-content'>
+        <p className='alert-message'>{message}</p>
+        { description && <p className={'alert-description'}>{description}</p> }
+      </div>
+      { (closable && close) && <span className={'alert-close'} onClick={close.bind(this)}>关</span> }
     </div>
   )
 }
 
 Alert.defaultProps = {
-  alertType: 'default',
-  close: false,
+  type: 'primary',
+  closable: false,
+  message: '提示消息',
+  description: ''
 }
 
 export default Alert

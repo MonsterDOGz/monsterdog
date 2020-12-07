@@ -35,7 +35,10 @@
 }
 
 @mixin alert-style($background) {
-  background: $background;
+  // background: rgba($background, 0.2);
+  // border-color: rgba($background, 0.7);
+  background: lighten($background, 40%);
+  border-color: lighten($background, 15%);
 }
 
 @mixin zoom-animation(
