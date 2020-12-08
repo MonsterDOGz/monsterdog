@@ -4,10 +4,12 @@ import reportWebVitals from './reportWebVitals';
 import Button from './components/Button/index'
 import Alert from './components/Alert/index'
 import './styles/index.scss';
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
 
 
 const Demo: React.FC = () => {
-  const [ alertShow, setAlertShow ] = useState(true)
+  const [ alertShow, setAlertShow ] = useState(false)
   const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e, 'I was closed.');
     setAlertShow(!alertShow)
@@ -26,6 +28,11 @@ const Demo: React.FC = () => {
           close={onClose}
         />
       }
+      <Menu>
+        <MenuItem index='0'>菜单一</MenuItem>
+        <MenuItem index='1'>菜单二</MenuItem>
+        <MenuItem index='2'>菜单三</MenuItem>
+      </Menu>
     </>
   )
 }
