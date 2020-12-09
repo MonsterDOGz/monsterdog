@@ -6,6 +6,7 @@ import Alert from './components/Alert/index'
 import './styles/index.scss';
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu'
 
 
 const Demo: React.FC = () => {
@@ -28,10 +29,14 @@ const Demo: React.FC = () => {
           close={onClose}
         />
       }
-      <Menu>
-        <MenuItem index='0'>菜单一</MenuItem>
-        <MenuItem index='1'>菜单二</MenuItem>
-        <MenuItem index='2'>菜单三</MenuItem>
+      <Menu mode='vertical' defaultOpenSubMenus={['2']}>
+        <MenuItem>菜单一</MenuItem>
+        <MenuItem>菜单二</MenuItem>
+        <MenuItem>菜单三</MenuItem>
+        <SubMenu title="菜单四">
+          <MenuItem>油条</MenuItem>
+          <MenuItem>豆浆</MenuItem>
+        </SubMenu>
       </Menu>
     </>
   )
