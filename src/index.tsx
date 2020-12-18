@@ -7,6 +7,8 @@ import './styles/index.scss';
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
+import Tabs from './components/Tabs/tabs'
+import TabsItem from './components/Tabs/tabsItem'
 
 
 const Demo: React.FC = () => {
@@ -29,15 +31,20 @@ const Demo: React.FC = () => {
           close={onClose}
         />
       }
-      <Menu mode='vertical' defaultOpenSubMenus={['2']}>
+      <Menu mode='horizontal' defaultOpenSubMenus={['2']}>
         <MenuItem>菜单一</MenuItem>
-        <MenuItem>菜单二</MenuItem>
+        <MenuItem disabled>菜单二</MenuItem>
         <MenuItem>菜单三</MenuItem>
         <SubMenu title="菜单四">
           <MenuItem>油条</MenuItem>
           <MenuItem>豆浆</MenuItem>
         </SubMenu>
       </Menu>
+      <Tabs>
+        <TabsItem label='选项一' index='0'>111</TabsItem>
+        <TabsItem label='选项二' index='1'>222</TabsItem>
+        <TabsItem label='选项三' index='2' disabled>333</TabsItem>
+      </Tabs>
     </>
   )
 }
