@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import classNames from 'classnames'
+import Icon from '../Icon/icon'
 
 export type AlertType = 'success' | 'primary' | 'warning' | 'danger'
 
@@ -34,7 +35,8 @@ const Alert: FC<AlertProps> = (props) => {
         <p className='alert-message'>{message}</p>
         { description && <p className={'alert-description'}>{description}</p> }
       </div>
-      { (closable && close) && <span className={'alert-close'} onClick={close.bind(this)}>关</span> }
+      {/* { (closable && close) && <span className={'alert-close'} onClick={close.bind(this)}>关</span> } */}
+      { (closable && close) && <Icon icon="times" className="alert-close" onClick={close.bind(this)}/> }
     </div>
   )
 }

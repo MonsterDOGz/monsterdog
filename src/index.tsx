@@ -9,6 +9,11 @@ import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
 import Tabs from './components/Tabs/tabs'
 import TabsItem from './components/Tabs/tabsItem'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import Transition from './components/Transition/transition'
+
+library.add(fas)
 
 
 const Demo: React.FC = () => {
@@ -22,7 +27,12 @@ const Demo: React.FC = () => {
       <Button>
         <span onClick={() => { setAlertShow(!alertShow) }}>按钮</span>
       </Button>
-      {alertShow &&
+      <Transition
+        in={alertShow}
+        timeout={300}
+        animation="zoom-in-top"
+        wrapper
+      >
         <Alert
           message='error'
           description='打开了 Alert !打开了 Alert !打开了 Alert !'
@@ -30,7 +40,7 @@ const Demo: React.FC = () => {
           closable
           close={onClose}
         />
-      }
+      </Transition>
       <Menu mode='horizontal' defaultOpenSubMenus={['2']}>
         <MenuItem>菜单一</MenuItem>
         <MenuItem disabled>菜单二</MenuItem>
