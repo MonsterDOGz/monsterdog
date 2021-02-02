@@ -1,3 +1,11 @@
+/*
+ * @Author: MonsterDOG
+ * @Date: 2021-01-18 15:00:55
+ * @LastEditors: MonsterDOG
+ * @LastEditTime: 2021-02-02 16:56:37
+ * @FilePath: /monsterdog/src/index.tsx
+ * @Description: 【描述】
+ */
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
@@ -11,36 +19,27 @@ import Tabs from './components/Tabs/tabs'
 import TabsItem from './components/Tabs/tabsItem'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import Transition from './components/Transition/transition'
 
 library.add(fas)
 
 
 const Demo: React.FC = () => {
-  const [ alertShow, setAlertShow ] = useState(false)
   const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e, 'I was closed.');
-    setAlertShow(!alertShow)
+    // setAlertShow(!alertShow)
   };
   return (
     <>
       <Button>
-        <span onClick={() => { setAlertShow(!alertShow) }}>按钮</span>
+        {/* <span onClick={() => { setAlertShow(!alertShow) }}>按钮</span> */}
       </Button>
-      <Transition
-        in={alertShow}
-        timeout={300}
-        animation="zoom-in-top"
-        wrapper
-      >
-        <Alert
-          message='error'
-          description='打开了 Alert !打开了 Alert !打开了 Alert !'
-          type='warning'
-          closable
-          close={onClose}
-        />
-      </Transition>
+      <Alert
+        message='error'
+        description='打开了 Alert !打开了 Alert !打开了 Alert !'
+        type='warning'
+        closable
+        close={onClose}
+      />
       <Menu mode='horizontal' defaultOpenSubMenus={['2']}>
         <MenuItem>菜单一</MenuItem>
         <MenuItem disabled>菜单二</MenuItem>
